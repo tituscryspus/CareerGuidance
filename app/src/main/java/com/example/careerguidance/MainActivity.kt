@@ -3,61 +3,26 @@ package com.example.careerguidance
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.careerguidance.model.CareerField
-import com.example.careerguidance.model.Course
-import com.example.careerguidance.ui.screens.CourseDetailScreen
-import com.example.careerguidance.ui.screens.CourseListScreen
-import com.example.careerguidance.ui.screens.HomeScreen
+import androidx.navigation.compose.rememberNavController
+import com.example.careerguidance.navigation.Navigation
 import com.example.careerguidance.ui.theme.CareerGuidanceTheme
+import com.example.careerguidance.ui.viewmodel.CareerViewModel
 
 class MainActivity : ComponentActivity() {
+    private val viewModel: CareerViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             CareerGuidanceTheme {
-                CareerGuidanceApp()
+                val navController = rememberNavController()
+                Navigation(
+                    navController = navController,
+                    viewModel = viewModel
+                )
             }
         }
-    }
-}
-
-@Composable
-fun CareerGuidanceApp() {
-    var selectedField by remember { mutableStateOf<CareerField?>(null) }
-    var selectedCourse by remember { mutableStateOf<Course?>(null) }
-
-    when {
-        selectedCourse != null -> {
-            CourseDetailScreen(
-                course = selectedCourse!!,
-                onBackPressed = { selectedCourse = null }
-            )
-        }
-        selectedField != null -> {
-            CourseListScreen(
-                careerField = selectedField!!,
-                onCourseSelected = { course -> selectedCourse = course },
-                onBackPressed = { selectedField = null }
-            )
-        }
-        else -> {
-            HomeScreen(
-                onFieldSelected = { field -> selectedField = field }
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun CareerGuidanceAppPreview() {
-    CareerGuidanceTheme {
-        CareerGuidanceApp()
     }
 }

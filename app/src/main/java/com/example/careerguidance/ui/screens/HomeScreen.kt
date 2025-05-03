@@ -5,8 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -21,6 +23,18 @@ import com.example.careerguidance.model.CareerField
 fun HomeScreen(
     onFieldSelected: (CareerField) -> Unit
 ) {
+    var searchQuery by remember { mutableStateOf("") }
+    val filteredFields = remember(searchQuery) {
+        if (searchQuery.isEmpty()) {
+            CareerRepository.careerFields
+        } else {
+            CareerRepository.careerFields.filter { field ->
+                field.name.contains(searchQuery, ignoreCase = true) ||
+                field.description.contains(searchQuery, ignoreCase = true)
+            }
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -32,18 +46,51 @@ fun HomeScreen(
             )
         }
     ) { padding ->
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(CareerRepository.careerFields) { field ->
-                CareerFieldCard(
-                    careerField = field,
-                    onClick = { onFieldSelected(field) }
-                )
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                placeholder = { Text("Search for a career field...") },
+                leadingIcon = {
+                    Icon(Icons.Default.Search, contentDescription = "Search")
+                },
+                singleLine = true
+            )
+
+            if (filteredFields.isEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "No matching career fields found",
+                        style = MaterialTheme.typography.bodyLarge,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            } else {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    items(filteredFields) { field ->
+                        CareerFieldCard(
+                            careerField = field,
+                            onClick = { onFieldSelected(field) }
+                        )
+                    }
+                }
             }
         }
     }
@@ -67,7 +114,7 @@ fun CareerFieldCard(
                 contentDescription = careerField.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp),
+                    .height(180.dp),
                 contentScale = ContentScale.Crop
             )
             Column(
@@ -84,6 +131,11 @@ fun CareerFieldCard(
                     text = careerField.description,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.Justify
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "${careerField.courses.size} courses available",
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }

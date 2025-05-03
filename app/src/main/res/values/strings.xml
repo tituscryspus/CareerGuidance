@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CareerGuidance</string>
+    <string name="app_name">Career Guidance</string>
+    
+    <!-- Home Screen -->
+    <string name="search_hint">Search for a career field…</string>
+    <string name="no_results">No matching career fields found</string>
+    <string name="courses_available">%d courses available</string>
+    
+    <!-- Course Detail Screen -->
+    <string name="view_requirements">View Requirements PDF</string>
+    <string name="description">Description</string>
+    <string name="duration">Duration</string>
+    <string name="requirements">Requirements</string>
+    <string name="career_prospects">Career Prospects</string>
+    
+    <!-- Navigation -->
+    <string name="back">Back</string>
 </resources>
