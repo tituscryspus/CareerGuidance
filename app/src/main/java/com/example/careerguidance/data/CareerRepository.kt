@@ -137,6 +137,192 @@ object CareerRepository {
                     )
                 )
             )
+        ),
+        CareerField(
+            id = 4,
+            name = "Engineering",
+            description = "Design and build solutions to real-world problems",
+            imageResId = R.drawable.engineering_field,
+            courses = listOf(
+                Course(
+                    id = 7,
+                    name = "Mechanical Engineering",
+                    description = "Design and build mechanical systems and machines",
+                    duration = "4 years",
+                    imageResId = R.drawable.mechanical_engineering,
+                    requirements = listOf(
+                        "Strong physics and mathematics",
+                        "Problem-solving abilities",
+                        "Technical drawing skills"
+                    ),
+                    careerProspects = listOf(
+                        "Mechanical Engineer",
+                        "Design Engineer",
+                        "Project Manager",
+                        "Research Engineer"
+                    )
+                ),
+                Course(
+                    id = 8,
+                    name = "Electrical Engineering",
+                    description = "Work with electrical systems, electronics, and power generation",
+                    duration = "4 years",
+                    imageResId = R.drawable.electrical_engineering,
+                    requirements = listOf(
+                        "Mathematics and physics",
+                        "Circuit analysis skills",
+                        "Programming knowledge"
+                    ),
+                    careerProspects = listOf(
+                        "Electrical Engineer",
+                        "Power Systems Engineer",
+                        "Electronics Engineer",
+                        "Control Systems Engineer"
+                    )
+                ),
+                Course(
+                    id = 9,
+                    name = "Civil Engineering",
+                    description = "Design and construct infrastructure projects",
+                    duration = "4 years",
+                    imageResId = R.drawable.civil_engineering,
+                    requirements = listOf(
+                        "Structural analysis skills",
+                        "Project management abilities",
+                        "Technical drawing proficiency"
+                    ),
+                    careerProspects = listOf(
+                        "Civil Engineer",
+                        "Structural Engineer",
+                        "Construction Manager",
+                        "Transportation Engineer"
+                    )
+                )
+            )
+        ),
+        CareerField(
+            id = 5,
+            name = "Arts & Design",
+            description = "Express creativity and develop visual communication skills",
+            imageResId = R.drawable.arts_design_field,
+            courses = listOf(
+                Course(
+                    id = 10,
+                    name = "Graphic Design",
+                    description = "Create visual content for various media platforms",
+                    duration = "4 years",
+                    imageResId = R.drawable.graphic_design,
+                    requirements = listOf(
+                        "Creativity and artistic ability",
+                        "Digital design skills",
+                        "Communication skills"
+                    ),
+                    careerProspects = listOf(
+                        "Graphic Designer",
+                        "Art Director",
+                        "UI/UX Designer",
+                        "Brand Designer"
+                    )
+                ),
+                Course(
+                    id = 11,
+                    name = "Fine Arts",
+                    description = "Develop artistic skills and creative expression",
+                    duration = "4 years",
+                    imageResId = R.drawable.fine_arts,
+                    requirements = listOf(
+                        "Artistic talent",
+                        "Creative thinking",
+                        "Visual communication skills"
+                    ),
+                    careerProspects = listOf(
+                        "Fine Artist",
+                        "Art Teacher",
+                        "Gallery Curator",
+                        "Art Conservator"
+                    )
+                ),
+                Course(
+                    id = 12,
+                    name = "Architecture",
+                    description = "Design buildings and physical structures",
+                    duration = "5 years",
+                    imageResId = R.drawable.architecture,
+                    requirements = listOf(
+                        "Design skills",
+                        "Technical knowledge",
+                        "Spatial awareness"
+                    ),
+                    careerProspects = listOf(
+                        "Architect",
+                        "Urban Designer",
+                        "Interior Designer",
+                        "Project Manager"
+                    )
+                )
+            )
+        ),
+        CareerField(
+            id = 6,
+            name = "Education",
+            description = "Shape the future through teaching and educational leadership",
+            imageResId = R.drawable.education_field,
+            courses = listOf(
+                Course(
+                    id = 13,
+                    name = "Elementary Education",
+                    description = "Prepare to teach young children in primary schools",
+                    duration = "4 years",
+                    imageResId = R.drawable.elementary_education,
+                    requirements = listOf(
+                        "Patience and empathy",
+                        "Communication skills",
+                        "Classroom management"
+                    ),
+                    careerProspects = listOf(
+                        "Elementary School Teacher",
+                        "Special Education Teacher",
+                        "Curriculum Developer",
+                        "School Administrator"
+                    )
+                ),
+                Course(
+                    id = 14,
+                    name = "Secondary Education",
+                    description = "Specialize in teaching specific subjects at high school level",
+                    duration = "4 years",
+                    imageResId = R.drawable.secondary_education,
+                    requirements = listOf(
+                        "Subject expertise",
+                        "Teaching skills",
+                        "Leadership abilities"
+                    ),
+                    careerProspects = listOf(
+                        "High School Teacher",
+                        "Subject Specialist",
+                        "Department Head",
+                        "Educational Consultant"
+                    )
+                ),
+                Course(
+                    id = 15,
+                    name = "Educational Psychology",
+                    description = "Study how people learn and develop in educational settings",
+                    duration = "4 years",
+                    imageResId = R.drawable.educational_psychology,
+                    requirements = listOf(
+                        "Psychology background",
+                        "Research skills",
+                        "Analytical thinking"
+                    ),
+                    careerProspects = listOf(
+                        "School Psychologist",
+                        "Educational Researcher",
+                        "Learning Specialist",
+                        "Educational Consultant"
+                    )
+                )
+            )
         )
     )
 } 
