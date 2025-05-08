@@ -1,4 +1,4 @@
-package com.example.careerguidance.ui.screens
+package com.example.careerguidance.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

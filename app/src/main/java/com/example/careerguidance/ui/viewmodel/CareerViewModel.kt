@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class CareerViewModel : ViewModel() {
+    // --- StateFlows for UI State ---
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
@@ -20,15 +21,17 @@ class CareerViewModel : ViewModel() {
     private val _selectedCourse = MutableStateFlow<Course?>(null)
     val selectedCourse: StateFlow<Course?> = _selectedCourse.asStateFlow()
 
-    val filteredFields: StateFlow<List<CareerField>> = MutableStateFlow(CareerRepository.careerFields).asStateFlow()
+    private val _filteredFields = MutableStateFlow(CareerRepository.careerFields)
+    val filteredFields: StateFlow<List<CareerField>> = _filteredFields.asStateFlow()
 
+    // --- Search Logic ---
     fun updateSearchQuery(query: String) {
         _searchQuery.value = query
         viewModelScope.launch {
-            if (query.isEmpty()) {
-                _filteredFields.value = CareerRepository.careerFields
+            _filteredFields.value = if (query.isEmpty()) {
+                CareerRepository.careerFields
             } else {
-                _filteredFields.value = CareerRepository.careerFields.filter { field ->
+                CareerRepository.careerFields.filter { field ->
                     field.name.contains(query, ignoreCase = true) ||
                     field.description.contains(query, ignoreCase = true)
                 }
@@ -36,6 +39,7 @@ class CareerViewModel : ViewModel() {
         }
     }
 
+    // --- Selection Logic ---
     fun selectField(field: CareerField) {
         _selectedField.value = field
     }
@@ -48,7 +52,4 @@ class CareerViewModel : ViewModel() {
         _selectedField.value = null
         _selectedCourse.value = null
     }
-
-    private val _filteredFields = MutableStateFlow(CareerRepository.careerFields)
-    val filteredFields: StateFlow<List<CareerField>> = _filteredFields.asStateFlow()
 } 

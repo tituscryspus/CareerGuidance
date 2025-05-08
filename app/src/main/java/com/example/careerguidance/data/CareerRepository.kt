@@ -4,7 +4,7 @@ import com.example.careerguidance.R
 import com.example.careerguidance.model.CareerField
 import com.example.careerguidance.model.Course
 
-object CareerRepository {
+object   CareerRepository {
     val careerFields = listOf(
         CareerField(
             id = 1,
@@ -46,6 +46,42 @@ object CareerRepository {
                         "Business Analyst",
                         "Database Administrator",
                         "IT Project Manager"
+                    )
+                ),
+                Course(
+                    id = 10,
+                    name = "Cybersecurity",
+                    description = "Protect systems and networks from digital attacks and threats.",
+                    duration = "4 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Attention to detail",
+                        "Knowledge of networks",
+                        "Problem-solving skills"
+                    ),
+                    careerProspects = listOf(
+                        "Cybersecurity Analyst",
+                        "Penetration Tester",
+                        "Security Engineer",
+                        "Incident Responder"
+                    )
+                ),
+                Course(
+                    id = 11,
+                    name = "Software Engineering",
+                    description = "Design, develop, and maintain software applications and systems.",
+                    duration = "4 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Programming skills",
+                        "Teamwork",
+                        "Project management"
+                    ),
+                    careerProspects = listOf(
+                        "Software Engineer",
+                        "QA Engineer",
+                        "DevOps Engineer",
+                        "Mobile App Developer"
                     )
                 )
             )
@@ -91,6 +127,42 @@ object CareerRepository {
                         "Clinical Nurse Specialist",
                         "Nurse Educator"
                     )
+                ),
+                Course(
+                    id = 12,
+                    name = "Pharmacy",
+                    description = "Study the science of preparing and dispensing medications.",
+                    duration = "5 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Chemistry knowledge",
+                        "Attention to detail",
+                        "Communication skills"
+                    ),
+                    careerProspects = listOf(
+                        "Pharmacist",
+                        "Clinical Pharmacist",
+                        "Pharmacy Manager",
+                        "Pharmaceutical Researcher"
+                    )
+                ),
+                Course(
+                    id = 13,
+                    name = "Physiotherapy",
+                    description = "Help patients recover and improve physical movement and function.",
+                    duration = "4 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Biology knowledge",
+                        "Empathy",
+                        "Physical fitness"
+                    ),
+                    careerProspects = listOf(
+                        "Physiotherapist",
+                        "Rehabilitation Specialist",
+                        "Sports Therapist",
+                        "Clinical Educator"
+                    )
                 )
             )
         ),
@@ -134,6 +206,42 @@ object CareerRepository {
                         "Investment Banker",
                         "Portfolio Manager",
                         "Financial Consultant"
+                    )
+                ),
+                Course(
+                    id = 14,
+                    name = "Marketing",
+                    description = "Learn strategies for promoting products and services to consumers.",
+                    duration = "4 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Creativity",
+                        "Communication skills",
+                        "Analytical thinking"
+                    ),
+                    careerProspects = listOf(
+                        "Marketing Specialist",
+                        "Brand Manager",
+                        "Market Research Analyst",
+                        "Digital Marketer"
+                    )
+                ),
+                Course(
+                    id = 15,
+                    name = "Human Resource Management",
+                    description = "Manage recruitment, training, and employee relations in organizations.",
+                    duration = "4 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Interpersonal skills",
+                        "Organizational skills",
+                        "Problem-solving"
+                    ),
+                    careerProspects = listOf(
+                        "HR Manager",
+                        "Recruitment Specialist",
+                        "Training Coordinator",
+                        "Compensation Analyst"
                     )
                 )
             )
@@ -196,6 +304,42 @@ object CareerRepository {
                         "Structural Engineer",
                         "Construction Manager",
                         "Transportation Engineer"
+                    )
+                ),
+                Course(
+                    id = 16,
+                    name = "Chemical Engineering",
+                    description = "Apply chemistry, biology, and physics to solve problems involving the production of chemicals, fuel, drugs, and food.",
+                    duration = "4 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Chemistry knowledge",
+                        "Analytical skills",
+                        "Problem-solving"
+                    ),
+                    careerProspects = listOf(
+                        "Chemical Engineer",
+                        "Process Engineer",
+                        "Biochemical Engineer",
+                        "Production Manager"
+                    )
+                ),
+                Course(
+                    id = 17,
+                    name = "Software Engineering",
+                    description = "Develop and maintain software systems for engineering applications.",
+                    duration = "4 years",
+                    imageResId = R.drawable.ic_launcher_foreground,
+                    requirements = listOf(
+                        "Programming skills",
+                        "Systems thinking",
+                        "Teamwork"
+                    ),
+                    careerProspects = listOf(
+                        "Software Engineer",
+                        "Embedded Systems Engineer",
+                        "Automation Engineer",
+                        "Systems Analyst"
                     )
                 )
             )

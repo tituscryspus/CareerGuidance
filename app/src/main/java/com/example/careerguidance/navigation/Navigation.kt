@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.careerguidance.ui.screens.CourseDetailScreen
-import com.example.careerguidance.ui.screens.CourseListScreen
-import com.example.careerguidance.ui.screens.HomeScreen
+import com.example.careerguidance.screens.CourseDetailScreen
+import com.example.careerguidance.screens.CourseListScreen
+import com.example.careerguidance.screens.HomeScreen
 import com.example.careerguidance.ui.viewmodel.CareerViewModel
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
