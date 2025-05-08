@@ -1,22 +1,21 @@
 package com.example.careerguidance.ui.screens
 
-import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Description
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.careerguidance.R
 import com.example.careerguidance.model.Course
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -31,7 +30,7 @@ fun CourseDetailScreen(
                 title = { Text(course.name) },
                 navigationIcon = {
                     IconButton(onClick = onBackPressed) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -52,7 +51,7 @@ fun CourseDetailScreen(
                     contentDescription = course.name,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(250.dp),
+                        .height(dimensionResource(R.dimen.detail_image_height)),
                     contentScale = ContentScale.Crop
                 )
             }
@@ -60,16 +59,16 @@ fun CourseDetailScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
+                        .padding(dimensionResource(R.dimen.spacing_medium))
                 ) {
                     Text(
                         text = course.name,
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_medium)))
                     Text(
-                        text = "Description",
+                        text = stringResource(R.string.description),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
@@ -77,28 +76,28 @@ fun CourseDetailScreen(
                         text = course.description,
                         style = MaterialTheme.typography.bodyLarge,
                         textAlign = TextAlign.Justify,
-                        modifier = Modifier.padding(vertical = 8.dp)
+                        modifier = Modifier.padding(vertical = dimensionResource(R.dimen.spacing_small))
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_medium)))
                     Text(
-                        text = "Duration",
+                        text = stringResource(R.string.duration),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = course.duration,
                         style = MaterialTheme.typography.bodyLarge,
-                        modifier = Modifier.padding(vertical = 8.dp)
+                        modifier = Modifier.padding(vertical = dimensionResource(R.dimen.spacing_small))
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_medium)))
                     Text(
-                        text = "Requirements",
+                        text = stringResource(R.string.requirements),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
                     course.requirements.forEach { requirement ->
                         Row(
-                            modifier = Modifier.padding(vertical = 4.dp)
+                            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.spacing_small))
                         ) {
                             Text(
                                 text = "• ",
@@ -110,15 +109,15 @@ fun CourseDetailScreen(
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_medium)))
                     Text(
-                        text = "Career Prospects",
+                        text = stringResource(R.string.career_prospects),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
                     course.careerProspects.forEach { prospect ->
                         Row(
-                            modifier = Modifier.padding(vertical = 4.dp)
+                            modifier = Modifier.padding(vertical = dimensionResource(R.dimen.spacing_small))
                         ) {
                             Text(
                                 text = "• ",

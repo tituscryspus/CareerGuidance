@@ -13,10 +13,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.careerguidance.data.CareerRepository
 import com.example.careerguidance.model.CareerField
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.res.dimensionResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +44,7 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Career Guidance") },
+                title = { Text(stringResource(R.string.app_name)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -56,10 +62,10 @@ fun HomeScreen(
                 onValueChange = { searchQuery = it },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                placeholder = { Text("Search for a career field...") },
+                    .padding(dimensionResource(R.dimen.spacing_medium)),
+                placeholder = { Text(stringResource(R.string.search_hint)) },
                 leadingIcon = {
-                    Icon(Icons.Default.Search, contentDescription = "Search")
+                    Icon(Icons.Default.Search, contentDescription = stringResource(R.string.search_hint))
                 },
                 singleLine = true
             )
@@ -68,11 +74,11 @@ fun HomeScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(16.dp),
+                        .padding(dimensionResource(R.dimen.spacing_medium)),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "No matching career fields found",
+                        text = stringResource(R.string.no_results),
                         style = MaterialTheme.typography.bodyLarge,
                         textAlign = TextAlign.Center
                     )
@@ -81,8 +87,8 @@ fun HomeScreen(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                        .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+                    verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
                 ) {
                     items(filteredFields) { field ->
                         CareerFieldCard(
@@ -102,11 +108,18 @@ fun CareerFieldCard(
     careerField: CareerField,
     onClick: () -> Unit
 ) {
+    var visible by remember { mutableStateOf(false) }
+    val alpha by animateFloatAsState(
+        targetValue = if (visible) 1f else 0f,
+        animationSpec = tween(durationMillis = 700), label = "fadeIn"
+    )
+    LaunchedEffect(Unit) { visible = true }
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .graphicsLayer(alpha = alpha)
             .clickable(onClick = onClick),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(R.dimen.card_elevation))
     ) {
         Column {
             Image(
@@ -114,27 +127,27 @@ fun CareerFieldCard(
                 contentDescription = careerField.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.dp),
+                    .height(dimensionResource(R.dimen.image_height)),
                 contentScale = ContentScale.Crop
             )
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(dimensionResource(R.dimen.spacing_medium))
             ) {
                 Text(
                     text = careerField.name,
                     style = MaterialTheme.typography.headlineSmall
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
                 Text(
                     text = careerField.description,
                     style = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.Justify
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
                 Text(
-                    text = "${careerField.courses.size} courses available",
+                    text = stringResource(R.string.courses_available, careerField.courses.size),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
